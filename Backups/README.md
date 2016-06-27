@@ -12,6 +12,8 @@ This scripts were made to upload compressed logs that were X days old. Both of t
 
 **IMPORTANT** : the first part **doesn't** have to start with a slash, and both columns **never** have to finish with a slash either.
 
+You can check [services.list](https://github.com/JustDevNull/JustScripts/blob/master/Backups/services.list) to see an example.
+
 Logically the servers need the Google Cloud SDK installed with a service account configured who has permissions to write.
 
 * [upload_logs_gcsfuse_gbucket.sh](https://github.com/JustDevNull/JustScripts/blob/master/Backups/upload_logs_gcsfuse_gbucket.sh)
