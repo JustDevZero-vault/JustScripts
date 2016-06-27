@@ -1,7 +1,5 @@
 # Backups
 
-Here you will find all the scripts I used as a SysAdmin Junior. This means that lots of them will have unoptimized / bad ways to do things.
-
 ## Rackspace
 
 To use this script you will need to have installed at your server **swift**.
