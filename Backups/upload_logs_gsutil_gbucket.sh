@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# This script is intended to be used in servers who have configured gcsfuse, for gsutil there will be another script.
-
 # crontab -e information
 # upload_logs_gsutil_gbucket
 #30 10 * * * /root/scripts/upload_logs_gsutil_gbucket.sh /root/scripts/services.list >> /var/log/upload_logs_gbucket.log
