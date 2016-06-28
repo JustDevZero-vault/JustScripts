@@ -20,3 +20,5 @@ Logically the servers need the Google Cloud SDK installed with a service account
 * [upload_logs_gsutil_gbucket.sh](https://github.com/JustDevNull/JustScripts/blob/master/Backups/upload_logs_gsutil_gbucket.sh)
 
 Remember to look at the [GSUTIL](https://cloud.google.com/storage/docs/gsutil) and [GCSFUSE](https://cloud.google.com/storage/docs/gcs-fuse) documentation if needed.
+
+These scripts also use a Telegram bot to report the result of the operation showing from which host was executed and the date.
