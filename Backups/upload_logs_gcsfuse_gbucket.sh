@@ -42,7 +42,7 @@ then
     echo `date +%Y-%m-%d` "Mount process failed"
     echo `date +%Y-%m-%d` "Backup and delete process stoped"
     mnt_error=$(echo `date +%Y-%m-%d` "The server $hostname encountered an error trying to mount the mount point $mount_point")
-    ./zbxtg.sh "username" "$hostname upload script at $today" "$mnt_error"
+    /root/scripts/zbxtg.sh "username" "$hostname upload script at $today" "$mnt_error"
     exit 1
 fi
 
@@ -74,7 +74,7 @@ do
         if [ $hash_local == $hash_bucket ]
         then
             echo `date +%Y-%m-%d` "File $upload uploaded"
-            rm $upload
+            #rm $upload
             upload_correct=$(($upload_correct + 1))
         else
             rm $mount_point/$folder/$service/$file
@@ -103,4 +103,4 @@ message=$(echo `date +%Y-%m-%d` "Upload proccess finished : $upload_correct file
 
 echo $message
 
-./zbxtg.sh "username" "$hostname upload script at $today" "$message"
+/root/scripts/zbxtg.sh "username" "$hostname upload script at $today" "$message"

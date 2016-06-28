@@ -40,7 +40,7 @@ do
         if [ $hash_local == $hash_bucket ];
         then
             echo `date +%Y-%m-%d` "File $upload uploaded"
-            rm $upload
+            #rm $upload
             upload_correct=$(($upload_correct + 1))
         else
             gsutil rm gs://$gbucket/$folder/$service/$file
@@ -56,4 +56,4 @@ message=$(echo `date +%Y-%m-%d` "Upload proccess finished : $upload_correct file
 
 echo $message
 
-./zbxtg.sh "username" "$hostname upload script at $today" "$message"
+/root/scripts/zbxtg.sh "username" "$hostname upload script at $today" "$message"
