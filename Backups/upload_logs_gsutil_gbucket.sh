@@ -33,9 +33,9 @@ do
     for upload in $(find $log/*.$fformat -mtime +$days_older)
     do
         file=$(echo $upload | awk -F/ '{print $NF}')
-        gsutil cp $upload gs://$gbucket/$folder/$service/
-        hash_local=$(gsutil hash $upload | grep crc32c | awk '{print $3}')
-        hash_bucket=$(gsutil ls -L gs://$gbucket/$folder/$service/$file | grep crc32c | awk '{print $3}')
+        gsutil cp "$upload" "gs://$gbucket/$folder/$service/"
+        hash_local=$(gsutil hash "$upload" | grep crc32c | awk '{print $3}')
+        hash_bucket=$(gsutil ls -L "gs://$gbucket/$folder/$service/$file" | grep crc32c | awk '{print $3}')
         total_files=$(($total_files + 1))
         if [ $hash_local == $hash_bucket ];
         then
@@ -43,7 +43,7 @@ do
             #rm $upload
             upload_correct=$(($upload_correct + 1))
         else
-            gsutil rm gs://$gbucket/$folder/$service/$file
+            gsutil rm "gs://$gbucket/$folder/$service/$file"
             echo `date +%Y-%m-%d` "ERROR - $upload CRC32C MISMATCH"
             upload_error=$(($upload_error + 1))
         fi
