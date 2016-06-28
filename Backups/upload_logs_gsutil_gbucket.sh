@@ -13,6 +13,8 @@ gbucket="google-bucket"
 fformat="gz"
 filename=$1
 folder="server1"
+hostname=`hostname`
+today=`date +%Y-%m-%d`
 total_files="0"
 upload_correct="0"
 upload_error="0"
@@ -52,4 +54,8 @@ do
     echo `date +%Y-%m-%d` "$service logs uploaded"
 done <<< "$(cat $filename)"
 
-echo `date +%Y-%m-%d` "Upload proccess finished : $upload_correct files uploaded and $upload_error failed of $total_files files"
+message=$(echo `date +%Y-%m-%d` "Upload proccess finished : $upload_correct files uploaded and $upload_error failed of $total_files files")
+
+echo $message
+
+./zbxtg.sh "username" "$hostname upload script at $today" "$message"

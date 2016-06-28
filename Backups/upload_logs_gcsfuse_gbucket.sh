@@ -13,8 +13,10 @@ gbucket="google-bucket"
 fformat="gz"
 filename=$1
 folder="server1"
+hostname=`hostname`
 mount_error="0"
 mount_point="/mnt/backup"
+today=`date +%Y-%m-%d`
 total_files="0"
 upload_correct="0"
 upload_error="0"
@@ -41,6 +43,8 @@ then
     umount $mount_point
     echo `date +%Y-%m-%d` "Mount process failed"
     echo `date +%Y-%m-%d` "Backup and delete process stoped"
+    mnt_error=$(echo `date +%Y-%m-%d` "The server $hostname encountered an error trying to mount the mount point $mount_point")
+    ./zbxtg.sh "username" "$hostname upload script at $today" "$mnt_error"
     exit 1
 fi
 
@@ -97,4 +101,8 @@ else
     echo `date +%Y-%m-%d` "Umount process failed!!"
 fi
 
-echo `date +%Y-%m-%d` "Upload proccess finished : $upload_correct files uploaded and $upload_error failed of $total_files files"
+message=$(echo `date +%Y-%m-%d` "Upload proccess finished : $upload_correct files uploaded and $upload_error failed of $total_files files")
+
+echo $message
+
+./zbxtg.sh "username" "$hostname upload script at $today" "$message"
