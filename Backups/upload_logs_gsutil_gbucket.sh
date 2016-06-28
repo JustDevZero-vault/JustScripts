@@ -33,7 +33,7 @@ do
     for upload in $(find $log/*.$fformat -mtime +$days_older)
     do
         file=$(echo $upload | awk -F/ '{print $NF}')
-        gsutil cp "$upload" "gs://$gbucket/$folder/$service/"
+        gsutil cp -c -L "$upload" "gs://$gbucket/$folder/$service/"
         hash_local=$(gsutil hash "$upload" | grep crc32c | awk '{print $3}')
         hash_bucket=$(gsutil ls -L "gs://$gbucket/$folder/$service/$file" | grep crc32c | awk '{print $3}')
         total_files=$(($total_files + 1))
