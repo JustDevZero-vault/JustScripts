@@ -37,7 +37,7 @@ do
         hash_local=$(gsutil hash "$upload" | grep crc32c | awk '{print $3}')
         hash_bucket=$(gsutil ls -L "gs://$gbucket/$folder/$service/$file" | grep crc32c | awk '{print $3}')
         total_files=$(($total_files + 1))
-        if [ $hash_local == $hash_bucket ];
+        if [ "$hash_local" == "$hash_bucket" ];
         then
             echo `date +%Y-%m-%d` "File $upload uploaded"
             #rm $upload
